@@ -1,4 +1,4 @@
-.PHONY: fmt, lint, test, bench
+.PHONY: fmt lint test bench
 
 fmt:
 	gofumpt -l -w .
