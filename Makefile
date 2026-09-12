@@ -1,0 +1,12 @@
+.PHONY fmt, lint, test, bench
+
+	fmt:
+		gofumpt -l -w .
+
+	lint:
+ 	    go vet ./...
+    	staticcheck ./...
+    	revive -config revive.toml -set_exit_status ./...
+
+    test:
+    	go test -race -cover ./..
