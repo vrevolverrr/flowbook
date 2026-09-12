@@ -1,5 +1,3 @@
-## Design doc
+## Summary
 
-## Tests added
-
-## What the reviewer should look at
+## Test plan
