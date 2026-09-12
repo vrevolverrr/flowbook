@@ -1,20 +1,41 @@
 # flowbook
 
-A limit order book and agent-based market simulation library in Go.
+An embeddable order book and agent-based market simulation engine in Go.
 
-flowbook provides a price-time priority matching engine and a continuous-time
-simulation loop for driving heterogeneous trading agents against it. It is
-intended for market microstructure research, strategy prototyping, and
-generating synthetic order flow.
+flowbook models a single instrument on a single venue: a central limit order
+book and the agents that trade on it. It ships with a matching engine, a
+continuous-time simulation loop, and a set of ready-made agents, so you can
+build an exchange simulator with a few lines of Go and then customise the
+scenario, the agents, or the market rules.
 
-## Features
+It is built for teaching and learning how markets work: order priority,
+spreads, market impact, market making, and how different kinds of participants
+shape price. The default agent mix is calibrated so that an out-of-the-box run
+reproduces the well-known stylised facts of real markets: fat-tailed returns,
+volatility clustering, absence of return autocorrelation, and realistic
+spread and order-flow distributions.
 
-- Limit order book with FIFO price levels and O(log n) best-price lookup
-- Matching engine for market, limit, cancel and replace actions
-- Continuous-time (Gillespie) simulation with a pluggable agent interface
-- Deterministic runs from a seed
-- Integer prices and quantities throughout; no floating point in the book
-- Standard library only
+**It is not a backtesting framework for retail or HFT trading, nor does it aim
+to be.**
+
+## Roadmap
+
+- [ ] `orderbook`: orders rest, match and cancel with price-time priority
+- [ ] `matcher`: order actions produce correct execution reports
+- [ ] `sim`: agents act in continuous time through a pluggable interface
+- [ ] `agent`: ready-made participants covering the main types found in real
+      markets
+- [ ] `stylised`: metrics for the stylised facts, and a default scenario that
+      passes them
+- [ ] `calibrate`: tunes agent parameters to hit a chosen set of target
+      statistics
+- [ ] `portfolio`: agents hold positions, and orders are checked against them
+      before reaching the book
+- [ ] `replay`: any run can be reproduced exactly from its seed
+- [ ] `cmd/flowbook`: runs launch from the command line and export data for
+      analysis
+- [ ] `stream`: external clients observe the market and submit orders over the
+      network
 
 ## Status
 
